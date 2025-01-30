@@ -28,7 +28,7 @@
 
             </MenuItem>
         </Menu>
-        <Frame Name="MainFrame"/>
+        <Frame Name="MainFrame" Grid.Row="2"/>
         
     </Grid>
 </Window>
