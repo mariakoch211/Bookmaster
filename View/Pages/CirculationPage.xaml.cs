@@ -10,19 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Bookmaster.View.Windows
+namespace Bookmaster.View.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для LoginWindow.xaml
+    /// Логика взаимодействия для CirculationPage.xaml
     /// </summary>
-    public partial class LoginWindow : Window
+    public partial class CirculationPage : Page
     {
-        public LoginWindow()
+        public CirculationPage()
         {
             InitializeComponent();
         }
-        
     }
 }

@@ -35,8 +35,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,6 +62,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="View\Pages\BrowseCatalogPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\CirculationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\ManageCustomersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\ReportsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Windows\LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -66,6 +89,66 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Model\Administrator.cs">
+      <DependentUpon>BookmasterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Author.cs">
+      <DependentUpon>BookmasterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Book.cs">
+      <DependentUpon>BookmasterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BookAuthor.cs">
+      <DependentUpon>BookmasterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BookCover.cs">
+      <DependentUpon>BookmasterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BookmasterModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BookmasterModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BookmasterModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BookmasterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BookmasterModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BookmasterModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BookSubject.cs">
+      <DependentUpon>BookmasterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Circulation.cs">
+      <DependentUpon>BookmasterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\City.cs">
+      <DependentUpon>BookmasterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Cover.cs">
+      <DependentUpon>BookmasterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Customer.cs">
+      <DependentUpon>BookmasterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Subject.cs">
+      <DependentUpon>BookmasterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\BrowseCatalogPage.xaml.cs">
+      <DependentUpon>BrowseCatalogPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\CirculationPage.xaml.cs">
+      <DependentUpon>CirculationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\ManageCustomersPage.xaml.cs">
+      <DependentUpon>ManageCustomersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\ReportsPage.xaml.cs">
+      <DependentUpon>ReportsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
@@ -93,6 +176,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="Model\BookmasterModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BookmasterModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\BookmasterModel.edmx.diagram">
+      <DependentUpon>BookmasterModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -103,12 +194,25 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AppData\" />
-    <Folder Include="Model\" />
     <Folder Include="Resources\Fonts\" />
     <Folder Include="Resources\Icons\" />
     <Folder Include="Resources\Images\" />
     <Folder Include="Style\" />
-    <Folder Include="View\Pages\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\BookmasterModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BookmasterModel.Context.cs</LastGenOutput>
+      <DependentUpon>BookmasterModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Model\BookmasterModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BookmasterModel.edmx</DependentUpon>
+      <LastGenOutput>BookmasterModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
